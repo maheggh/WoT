@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { SerialPort } = require('serialport');  // Import SerialPort
+const { SerialPort } = require('serialport');
 
 const app = express();
 const port = 5000;
@@ -8,13 +8,13 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-// Replace 'COM3' with your actual Micro:bit port
-const microbitPortPath = 'COM3';  // Ensure this is the correct port
+// Use the confirmed COM4 port for your Micro:bit
+const microbitPortPath = 'COM4';
 const microbitPort = new SerialPort({ path: microbitPortPath, baudRate: 115200 });
 
-// Handle raw data directly from the Micro:bit
+// Log raw serial data from Micro:bit
 microbitPort.on('data', (data) => {
-  console.log('Raw data received from Micro:bit:', data.toString());
+  console.log('Received data from Micro:bit:', data.toString());
 });
 
 // Endpoint to turn on Micro:bit LED
@@ -24,6 +24,7 @@ app.get('/microbit/on', (req, res) => {
       console.error('Error sending command:', err.message);
       return res.status(500).send('Error sending command');
     }
+    console.log('LED_ON command sent to Micro:bit');
     res.send('Micro:bit LED turned ON');
   });
 });
@@ -35,6 +36,7 @@ app.get('/microbit/off', (req, res) => {
       console.error('Error sending command:', err.message);
       return res.status(500).send('Error sending command');
     }
+    console.log('LED_OFF command sent to Micro:bit');
     res.send('Micro:bit LED turned OFF');
   });
 });

@@ -3,12 +3,24 @@ import React from 'react';
 const App = () => {
   // Function to turn on the Micro:bit LED
   const turnOn = async () => {
-    await fetch('http://localhost:3000/microbit/on');
+    try {
+      const response = await fetch('http://localhost:5000/microbit/on');
+      const result = await response.text();
+      console.log("Turn On Response:", result);
+    } catch (error) {
+      console.error("Error turning on LED:", error);
+    }
   };
 
   // Function to turn off the Micro:bit LED
   const turnOff = async () => {
-    await fetch('http://localhost:3000/microbit/off');
+    try {
+      const response = await fetch('http://localhost:5000/microbit/off');
+      const result = await response.text();
+      console.log("Turn Off Response:", result);
+    } catch (error) {
+      console.error("Error turning off LED:", error);
+    }
   };
 
   return (
