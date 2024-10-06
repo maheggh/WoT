@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 const App = () => {
   // Function to turn on the Micro:bit LED
@@ -24,10 +25,12 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='microbit'>
       <h1>Micro:bit Controller</h1>
-      <button onClick={turnOn}>Turn On LED</button>
-      <button onClick={turnOff}>Turn Off LED</button>
+      <div className='microbit-buttons'>
+      <button onClick={turnOn} className='onbutton'>Turn On LED</button>
+      <button onClick={turnOff} className='offbutton'>Turn Off LED</button>
+      </div>
     </div>
   );
 };
