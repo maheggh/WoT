@@ -1,0 +1,13 @@
+{
+  "name": "your-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\" \"npm run python-script\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start",
+    "python-script": "cd python && python index.py"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

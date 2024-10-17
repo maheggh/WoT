@@ -1,0 +1,18 @@
+.microbit {
+  display: grid;
+  justify-items: center; 
+  align-items: center;   
+  gap: 15px;
+  height: 100vh;          
+}
+
+.microbit-buttons {
+  display: flex;
+  justify-content: center;  
+  gap: 20px;                
+}
+
+.onbutton, .offbutton {
+  padding: 10px 20px;
+  font-size: 16px;
+}
